@@ -2,7 +2,7 @@
 # CLAUDE.md
 
 ## Stack
-- Frontend engineering project — [React/Next.js/Vue/etc., fill in once decided]
+- Frontend: HTML, CSS, JavaScript (vanilla); Node.js + npm for tooling
 
 ## Conventions
 - Commit format: Conventional Commits (feat:, fix:, docs:, chore:)
