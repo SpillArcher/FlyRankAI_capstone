@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Request organic growth support from FlyRankAI — SEO, AEO, and multilingual localization for D2C and SaaS brands."
+    />
+    <title>Request a Growth Consultation | FlyRankAI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="site-header__brand">
+        <a href="/" class="site-header__logo">FlyRank<span>AI</span></a>
+      </p>
+      <p class="site-header__tagline">Organic growth for D2C &amp; SaaS brands</p>
+    </header>
+
+    <main class="page">
+      <section class="hero" aria-labelledby="hero-title">
+        <p class="hero__eyebrow">Growth request</p>
+        <h1 id="hero-title">Tell us about your brand</h1>
+        <p class="hero__lead">
+          Share a few details and our team will review your goals for SEO, AI search
+          visibility (AEO), and localization. We typically respond within one business day.
+        </p>
+      </section>
+
+      <section class="form-layout" aria-labelledby="form-title">
+        <article class="form-panel">
+          <h2 id="form-title">Send a request</h2>
+          <p class="form-panel__hint">All fields marked with an asterisk are required.</p>
+
+          <form id="growth-request-form" class="request-form" novalidate>
+            <fieldset class="request-form__group">
+              <legend class="request-form__legend">Contact details</legend>
+
+              <label class="field" for="full-name">
+                <span class="field__label">Your name <abbr title="required">*</abbr></span>
+                <input
+                  id="full-name"
+                  name="fullName"
+                  type="text"
+                  autocomplete="name"
+                  required
+                  minlength="2"
+                  maxlength="80"
+                  placeholder="Jane Doe"
+                />
+                <span class="field__error" id="full-name-error" role="alert"></span>
+              </label>
+
+              <label class="field" for="work-email">
+                <span class="field__label">Work email <abbr title="required">*</abbr></span>
+                <input
+                  id="work-email"
+                  name="workEmail"
+                  type="email"
+                  autocomplete="email"
+                  required
+                  placeholder="jane@company.com"
+                />
+                <span class="field__error" id="work-email-error" role="alert"></span>
+              </label>
+
+              <label class="field" for="company">
+                <span class="field__label">Company <abbr title="required">*</abbr></span>
+                <input
+                  id="company"
+                  name="company"
+                  type="text"
+                  autocomplete="organization"
+                  required
+                  minlength="2"
+                  maxlength="120"
+                  placeholder="Acme Inc."
+                />
+                <span class="field__error" id="company-error" role="alert"></span>
+              </label>
+
+              <label class="field" for="website">
+                <span class="field__label">Website</span>
+                <input
+                  id="website"
+                  name="website"
+                  type="url"
+                  inputmode="url"
+                  autocomplete="url"
+                  placeholder="https://example.com"
+                />
+                <span class="field__error" id="website-error" role="alert"></span>
+              </label>
+            </fieldset>
+
+            <fieldset class="request-form__group">
+              <legend class="request-form__legend">Growth goals</legend>
+
+              <label class="field" for="primary-goal">
+                <span class="field__label">Primary focus <abbr title="required">*</abbr></span>
+                <select id="primary-goal" name="primaryGoal" required>
+                  <option value="">Select a focus area</option>
+                </select>
+                <span class="field__error" id="primary-goal-error" role="alert"></span>
+              </label>
+
+              <label class="field" for="message">
+                <span class="field__label">
+                  What are you looking to achieve? <abbr title="required">*</abbr>
+                </span>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  minlength="20"
+                  maxlength="2000"
+                  placeholder="Describe your traffic goals, current challenges, and timeline."
+                ></textarea>
+                <span class="field__meta">
+                  <span class="field__error" id="message-error" role="alert"></span>
+                  <span class="field__counter" id="message-counter" aria-live="polite">0 / 2000</span>
+                </span>
+              </label>
+            </fieldset>
+
+            <p
+              id="form-status"
+              class="form-status"
+              role="status"
+              aria-live="polite"
+              hidden
+            ></p>
+
+            <button type="submit" class="submit-button" id="submit-button">
+              Send request
+            </button>
+          </form>
+        </article>
+
+        <aside class="info-panel" aria-labelledby="info-title">
+          <h2 id="info-title">What happens next</h2>
+          <ol class="info-panel__steps">
+            <li>We review your brand, site, and growth goals.</li>
+            <li>You receive a tailored response within one business day.</li>
+            <li>Qualified requests can book a 30-minute strategy call.</li>
+          </ol>
+
+          <section class="info-panel__services" aria-labelledby="services-title">
+            <h3 id="services-title">How FlyRankAI helps</h3>
+            <ul class="service-list" id="service-list"></ul>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>FlyRankAI capstone project — Front End Engineering internship at FlyRank.</p>
+    </footer>
+
+    <script type="module" src="/js/main.js"></script>
+  </body>
+</html>
