@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlyRankAI Growth Request</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrapper">
+      <p class="eyebrow">FlyRankAI</p>
+      <h1>Growth request</h1>
+      <p>Share your goals and we’ll follow up with a tailored growth plan.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <div class="wrapper">
+        <form id="growth-request-form" novalidate>
+          <div class="field-group">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" />
+            <p class="field-error" id="error-name" aria-live="polite"></p>
+          </div>
+
+          <div class="field-group">
+            <label for="email">Work email</label>
+            <input id="email" name="email" type="email" autocomplete="email" />
+            <p class="field-error" id="error-email" aria-live="polite"></p>
+          </div>
+
+          <div class="field-group">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" autocomplete="organization" />
+            <p class="field-error" id="error-company" aria-live="polite"></p>
+          </div>
+
+          <div class="field-group">
+            <label for="website">Website</label>
+            <input id="website" name="website" type="url" autocomplete="url" placeholder="https://example.com" />
+            <p class="field-error" id="error-website" aria-live="polite"></p>
+          </div>
+
+          <div class="field-group">
+            <label for="primaryGoal">Primary goal</label>
+            <select id="primaryGoal" name="primaryGoal">
+              <option value="">Select your primary goal</option>
+              <option value="increase-traffic">Increase organic traffic</option>
+              <option value="expand-localization">Expand localization efforts</option>
+              <option value="improve-ranking">Improve SERP ranking</option>
+            </select>
+            <p class="field-error" id="error-primaryGoal" aria-live="polite"></p>
+          </div>
+
+          <div class="field-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5"></textarea>
+            <p class="field-error" id="error-message" aria-live="polite"></p>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" id="submit-button">Submit request</button>
+          </div>
+          <p class="form-status" id="form-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrapper">
+      <p>FlyRankAI — organic growth requests for SEO, AEO, and localization.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="./src/form.js"></script>
+</body>
+</html>
