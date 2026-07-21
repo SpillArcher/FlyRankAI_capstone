@@ -1,5 +1,5 @@
 ## Round 1 — Vague Prompt
-Prompt: "Build a demo request form for FlyRankAI."
+Prompt: "Build a request form for FlyRankAI."
 
 **What happened:** The model produced a working-looking form fast. It used
 semantic HTML, handled `response.ok`, disabled the button during submission, and
@@ -17,8 +17,16 @@ catch is that I still had to check validator sync manually, since there was no t
 suite to catch regressions.
 
 ## Round 2 — Precise Prompt + Verification
-Prompt: shared validation source, explicit status checks, no unnecessary Vercel config,
-and tests written and run before finishing.
+Prompt: "Build the same FlyRankAI growth request form (name, work email, company, website, primary goal select, message) as a fresh implementation.
+
+Constraints:
+
+Semantic HTML only, matching CLAUDE.md conventions (header/main/footer, :focus-visible never outline: none, :disabled during submit, box-sizing: border-box)
+Client and server must share ONE validation source — do not duplicate field rules between the client-side validator and the API handler. Import/reuse the same rules module in both places.
+The API handler must check response status explicitly (equivalent of response.ok), not rely on try/catch alone
+Do not add Vercel rewrite rules unless they change actual routing behavior — Vercel's /api folder convention doesn't need one for this case
+
+Write it, then write unit tests covering: required-field validation, invalid email rejection, the disabled-submit state, and a successful submission. Run the tests and fix any failures before finishing."
 
 **What happened:** The model followed the tighter instructions. A single
 `validation.js` module is shared between client and API, and Vitest tests were added.
