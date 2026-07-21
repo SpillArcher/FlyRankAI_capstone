@@ -54,8 +54,7 @@ Round 2: about 12 minutes from prompt to committed code.
 
 ## Verdict
 Round 2 took longer to write, but it caught meaningful architectural issues that the
-fast Round 1 output hid. It also introduced its own flaws: a minor accessibility
-regression and a broken build setup.
+fast Round 1 output hid. It also introduced its own flaws, a slight accessibility downgrade and a broken build setup.
 
 The lesson: a detailed prompt does not automatically make the result better in every
 way. It does make the result easier to evaluate, because you are checking the model
