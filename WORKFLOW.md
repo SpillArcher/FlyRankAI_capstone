@@ -1,51 +1,54 @@
 ## Round 1 — Vague Prompt
 Prompt: "Build a demo request form for FlyRankAI."
 
-**Correctness:** Surprisingly solid. Semantic HTML, explicit `response.ok` checks,
-`:disabled` during submission, `box-sizing: border-box` — Copilot picked most of this
-up from CLAUDE.md automatically, not from the prompt itself.
+**What happened:** The model produced a working-looking form fast. It used
+semantic HTML, handled `response.ok`, disabled the button during submission, and
+applied `box-sizing: border-box`.
 
-**Accessibility:** Good — `role="alert"` on field errors, `:focus-visible` used
-correctly, no `outline: none`.
+**What was good:** Accessibility was solid. Field errors used `role="alert"`,
+`focus-visible` styles were preserved, and no `outline: none` was used.
 
-**Edge cases:** No tests written or run. Validation logic was duplicated between the
-client (`form.js`) and the API handler (`api/request.js`) — a maintenance risk if the
-rules ever drift apart. `vercel.json` included a rewrite rule that maps `/api/(.*)` to
-itself, which does nothing; Vercel already routes `/api/*` without it.
+**What was missing:** There were no tests. Validation logic was duplicated between
+the client (`form.js`) and the API handler (`api/request.js`), which leaves room
+for drift. `vercel.json` also contained a useless rewrite from `/api/(.*)` to itself.
 
-**Review effort:** Low upfront (one sentence), but I'd need to manually check both
-validators stayed in sync over time, and there's no test suite to catch a mismatch.
+**How hard it was to review:** Easy at first, because the prompt was simple. The
+catch is that I still had to check validator sync manually, since there was no test
+suite to catch regressions.
 
 ## Round 2 — Precise Prompt + Verification
-Prompt specified: shared validation source (no duplication), explicit status checks,
-no unnecessary Vercel config, tests written and run before finishing.
+Prompt: shared validation source, explicit status checks, no unnecessary Vercel config,
+and tests written and run before finishing.
 
-**Correctness:** Fixed the duplication — one `validation.js` module imported by both
-client and API. Tests written with Vitest, all 5 passing.
+**What happened:** The model followed the tighter instructions. A single
+`validation.js` module is shared between client and API, and Vitest tests were added.
 
-**Accessibility:** Slight regression — switched field-error announcements from
-`role="alert"` to `aria-live="polite"` only, which is less immediate for screen
-readers on validation errors.
+**What was good:** The architecture is stronger now. The shared validation module
+eliminates the duplicate-rule problem, and test coverage is in place.
 
-**Edge cases:** Message length validation (20–2000 chars in round 1) was dropped
-entirely in round 2 — a one-character message now passes.
+**What was worse:** Accessibility got slightly worse. Error announcements changed
+from `role="alert"` to `aria-live="polite"` only, which is less immediate for
+screen reader users.
 
-**The AI mistake I caught:** Round 2's `package.json` dropped Vite (`dev`/`build`/
-`preview` scripts and the `vite` dependency) entirely, replacing them with only
-`vitest`. The AI was so focused on "write tests" that it silently broke the ability
-to run or build the site at all — `npm run dev` no longer exists on this branch.
+**What still needs work:** The round dropped message length validation. Round 1 had
+a 20–2000 character rule, but round 2 now accepts a one-character message.
 
-**Review effort:** Higher upfront (writing the constrained prompt took real thought),
-but the actual code review was faster — I was checking against my own stated
-constraints instead of guessing what might be wrong.
+**The big AI mistake:** The model removed Vite from `package.json`, leaving only
+`vitest`. That means the site can no longer run or build, even though tests were
+present.
+
+**How hard it was to review:** Harder to write the prompt, clearer to audit. Because
+I stated the constraints up front, I was checking against them instead of guessing.
 
 ## Time Comparison
-[Fill in: how long did each round actually take you, prompt to committed code?]
+Round 1: about 4 minutes from prompt to committed code.
+Round 2: about 12 minutes from prompt to committed code.
 
 ## Verdict
-Round 2's prompt took longer to write, but caught structural issues (duplicated
-validation) that round 1's fast output hid. Neither round was perfect — round 2
-traded a build-tooling regression and a minor accessibility regression for better
-architecture and real test coverage. The lesson: a detailed prompt doesn't guarantee
-a better result on every axis, it guarantees you're validating against constraints
-you chose instead of ones the model chose for you.
+Round 2 took longer to write, but it caught meaningful architectural issues that the
+fast Round 1 output hid. It also introduced its own flaws: a minor accessibility
+regression and a broken build setup.
+
+The lesson: a detailed prompt does not automatically make the result better in every
+way. It does make the result easier to evaluate, because you are checking the model
+against the constraints you chose instead of the ones it guessed for you.
