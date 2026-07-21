@@ -1,4 +1,4 @@
-## Round 1 — Vague Prompt
+## Round 1 - Vague Prompt
 Prompt: "Build a request form for FlyRankAI."
 
 **What happened:** The model produced a working-looking form fast. It used
@@ -16,7 +16,7 @@ for drift. `vercel.json` also contained a useless rewrite from `/api/(.*)` to it
 catch is that I still had to check validator sync manually, since there was no test
 suite to catch regressions.
 
-## Round 2 — Precise Prompt + Verification
+## Round 2 - Precise Prompt + Verification
 Prompt: "Build the same FlyRankAI growth request form (name, work email, company, website, primary goal select, message) as a fresh implementation.
 
 Constraints:
